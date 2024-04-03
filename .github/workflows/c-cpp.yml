@@ -1,0 +1,25 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: macos-12
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: make
+      run: make
+    - uses: actions/upload-artifact@v4
+      with:
+        name: miditones
+        path: miditones
+    - uses: actions/upload-artifact@v4
+      with:
+        name: miditones_scroll
+        path: miditones_scroll
